@@ -14,7 +14,10 @@ while True:
 
     if result.pose_landmarks:
         for id, lm in enumerate(result.pose_landmarks.landmark):
-            print(id, lm)
+            # print(id, lm)
+            img_height, img_width, channel = img.shape
+            x, y = int(lm.x * img_width), int(lm.y * img_height)
+            print(id, x, y)
 
     cv2.imshow('Video', img)
     cv2.waitKey(1)
