@@ -6,6 +6,8 @@ cap = cv2.VideoCapture('KneeBendVideo.mp4')
 mp_pose = mp.solutions.pose
 pose = mp_pose.Pose()
 
+mp_draw = mp.solutions.drawing_utils
+
 while True:
     success, img = cap.read()
     img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
@@ -20,6 +22,8 @@ while True:
             x, y = int(lm.x * img_width), int(lm.y * img_height)
             # print(id, x, y)
             lm_list.append([id, x, y])
-            print(lm_list)
+            # print(lm_list)
+        mp_draw.draw_landmarks(img, result.pose_landmarks, mp_pose.POSE_CONNECTIONS)
+
     cv2.imshow('Video', img)
     cv2.waitKey(1)
