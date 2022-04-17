@@ -9,7 +9,7 @@ pose = mp_pose.Pose()
 
 mp_draw = mp.solutions.drawing_utils
 
-pre_angle = 0
+pre_angle = 190
 
 while True:
     success, img = cap.read()
