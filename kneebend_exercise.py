@@ -10,8 +10,10 @@ pose = mp_pose.Pose()
 mp_draw = mp.solutions.drawing_utils
 
 pre_angle = 190
-dir = 0
+direction = 0
 count = 0
+p_time = 0
+c_time = 0
 
 while True:
     success, img = cap.read()
@@ -40,14 +42,23 @@ while True:
 
             # Count
             if angle < 150:
-                if dir == 0:
+                if direction == 0:
                     count += 0.5
-                    dir = 1
+                    direction = 1
             if angle > 150:
-                if dir == 1:
+                if direction == 1:
                     count += 0.5
-                    dir = 0
-            print(count)
+                    direction = 0
+            # print(count)
+
+            # Time
+            if direction == 1:
+                c_time = time.time()
+            if direction == 0:
+                p_time = time.time()
+            hold_time = c_time - p_time
+            print(hold_time)
+            
 
 
         # Draw Landmarks
