@@ -10,6 +10,8 @@ pose = mp_pose.Pose()
 mp_draw = mp.solutions.drawing_utils
 
 pre_angle = 190
+dir = 0
+count = 0
 
 while True:
     success, img = cap.read()
@@ -27,17 +29,30 @@ while True:
             lm_list.append([id, x, y])
             # print(lm_list)
 
-            angle = get_angle(lm_list, 23, 25, 27)
+            angle = get_angle(lm_list, 23, 25, 27, img)
 
-            if angle != None:
+            if angle is not None:
                 angle = angle
                 pre_angle = angle
             else:
                 angle = pre_angle
-            print(angle)
+            # print(angle)
+
+            # Count
+            if angle < 150:
+                if dir == 0:
+                    count += 0.5
+                    dir = 1
+            if angle > 150:
+                if dir == 1:
+                    count += 0.5
+                    dir = 0
+            print(count)
 
 
-        mp_draw.draw_landmarks(img, result.pose_landmarks, mp_pose.POSE_CONNECTIONS)
+        # Draw Landmarks
+        # mp_draw.draw_landmarks(img, result.pose_landmarks, mp_pose.POSE_CONNECTIONS)
 
     cv2.imshow('Video', img)
-    cv2.waitKey(1)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
