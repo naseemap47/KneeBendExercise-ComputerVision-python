@@ -13,6 +13,6 @@ def get_angle(list_lm, p1, p2, p3):
             math.atan2(y1 - y2, x1 - x2)
         )
 
-        return angle
+        return abs(angle)
 
 
