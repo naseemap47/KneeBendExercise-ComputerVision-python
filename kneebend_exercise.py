@@ -58,7 +58,18 @@ while True:
                 p_time = time.time()
             hold_time = c_time - p_time
             print(hold_time)
-            
+
+            if hold_time > 0:
+                if hold_time < 8:
+                    cv2.rectangle(
+                        img, (230, 40), (630, 80),
+                        (255, 255, 255), cv2.FILLED
+                    )
+                    cv2.putText(
+                        img, 'Keep your knee bent', (250, 70),
+                        cv2.FONT_HERSHEY_PLAIN, 2,
+                        (0, 0, 255), 2
+                    )
 
 
         # Draw Landmarks
