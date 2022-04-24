@@ -38,7 +38,7 @@ Feedback message - “Keep your knee bent”
 
 ## Demo Video
 
-https://user-images.githubusercontent.com/88816150/163711304-332fd013-a40d-4028-b57d-fb06a3e27e27.mp4
+https://user-images.githubusercontent.com/88816150/164972205-0129b198-b405-4c91-b4fe-6243cb60f783.mp4
 
 
 ## Requirements
